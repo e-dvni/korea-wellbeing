@@ -3,9 +3,6 @@ import { stripe } from "@/lib/stripe";
 import { createServerClient } from "@/lib/supabase-server";
 import type Stripe from "stripe";
 
-// Stripe requires the raw body to verify the webhook signature
-export const config = { api: { bodyParser: false } };
-
 export async function POST(req: NextRequest) {
   const body = await req.text();
   const sig = req.headers.get("stripe-signature");
@@ -31,9 +28,14 @@ export async function POST(req: NextRequest) {
 }
 
 async function handleCheckoutComplete(session: Stripe.Checkout.Session) {
-  const supabase = createServerClient();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const supabase = createServerClient() as any;
 
-  const shipping = session.shipping_details;
+  // shipping_details moved to collected_information in newer Stripe API versions
+  const shipping =
+    (session as any).collected_information?.shipping_details ??
+    (session as any).shipping_details;
+
   const shippingAddress = shipping?.address
     ? {
         line1: shipping.address.line1 ?? "",
@@ -45,10 +47,10 @@ async function handleCheckoutComplete(session: Stripe.Checkout.Session) {
       }
     : { line1: "", city: "", state: "", postal_code: "", country: "US" };
 
-  // Upsert customer
   const email = session.customer_details?.email ?? "";
   const name = session.customer_details?.name ?? "";
 
+  // Upsert customer
   const { data: customer } = await supabase
     .from("customers")
     .upsert({ email, name }, { onConflict: "email" })
@@ -57,7 +59,7 @@ async function handleCheckoutComplete(session: Stripe.Checkout.Session) {
 
   // Create order
   const totalCents = session.amount_total ?? 0;
-  const shippingCents = session.shipping_cost?.amount_total ?? 0;
+  const shippingCents = (session as any).shipping_cost?.amount_total ?? 0;
   const subtotalCents = totalCents - shippingCents;
 
   const { data: order } = await supabase
@@ -74,7 +76,7 @@ async function handleCheckoutComplete(session: Stripe.Checkout.Session) {
         typeof session.payment_intent === "string" ? session.payment_intent : null,
       subtotal_cents: subtotalCents,
       shipping_cents: shippingCents,
-      tax_cents: session.total_details?.amount_tax ?? 0,
+      tax_cents: (session as any).total_details?.amount_tax ?? 0,
       total_cents: totalCents,
     })
     .select("id")
@@ -82,11 +84,11 @@ async function handleCheckoutComplete(session: Stripe.Checkout.Session) {
 
   if (!order) return;
 
-  // Create order items from line items
+  // Save order items
   const lineItems = await stripe.checkout.sessions.listLineItems(session.id, { limit: 100 });
 
   await supabase.from("order_items").insert(
-    lineItems.data.map((item) => ({
+    lineItems.data.map((item: any) => ({
       order_id: order.id,
       sanity_product_id: "",
       product_name_en: item.description ?? "",
