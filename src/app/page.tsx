@@ -105,9 +105,6 @@ export default function Home() {
 
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-28 sm:pt-20 sm:pb-36 lg:pt-28 lg:pb-44">
           <div className="max-w-2xl">
-            <span className="inline-block bg-accent text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-6">
-              Authorized K Navien Dealer &nbsp;·&nbsp; 공식 K나비엔 딜러
-            </span>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-3">
               Bringing Korean
               <br />
