@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { stripe } from "@/lib/stripe";
 import { createServerClient } from "@/lib/supabase-server";
+import { sendOrderConfirmation } from "@/lib/resend";
 import type Stripe from "stripe";
 
 export async function POST(req: NextRequest) {
@@ -87,15 +88,27 @@ async function handleCheckoutComplete(session: Stripe.Checkout.Session) {
   // Save order items
   const lineItems = await stripe.checkout.sessions.listLineItems(session.id, { limit: 100 });
 
-  await supabase.from("order_items").insert(
-    lineItems.data.map((item: any) => ({
-      order_id: order.id,
-      sanity_product_id: "",
-      product_name_en: item.description ?? "",
-      product_name_kr: "",
-      quantity: item.quantity ?? 1,
-      unit_price_cents: item.price?.unit_amount ?? 0,
-      total_price_cents: item.amount_total,
-    }))
-  );
+  const orderItems = lineItems.data.map((item: any) => ({
+    order_id: order.id,
+    sanity_product_id: "",
+    product_name_en: item.description ?? "",
+    product_name_kr: "",
+    quantity: item.quantity ?? 1,
+    unit_price_cents: item.price?.unit_amount ?? 0,
+    total_price_cents: item.amount_total,
+  }));
+
+  await supabase.from("order_items").insert(orderItems);
+
+  // Send order confirmation email
+  if (email) {
+    await sendOrderConfirmation({
+      to: email,
+      customerName: name || "Customer",
+      orderId: order.id,
+      items: orderItems,
+      totalCents: totalCents,
+      shippingAddress: shippingAddress,
+    }).catch((err) => console.error("Failed to send confirmation email:", err));
+  }
 }
