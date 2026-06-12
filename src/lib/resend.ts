@@ -39,13 +39,38 @@ export async function sendOrderConfirmation(params: SendOrderConfirmationParams)
     )
     .join("");
 
-  const address = [
-    shippingAddress.line1,
-    shippingAddress.line2,
-    `${shippingAddress.city}, ${shippingAddress.state} ${shippingAddress.postal_code}`,
-  ]
-    .filter(Boolean)
-    .join("<br/>");
+  const isPickup = !shippingAddress.line1;
+
+  const address = isPickup
+    ? ""
+    : [
+        shippingAddress.line1,
+        shippingAddress.line2,
+        `${shippingAddress.city}, ${shippingAddress.state} ${shippingAddress.postal_code}`,
+      ]
+        .filter(Boolean)
+        .join("<br/>");
+
+  const fulfillmentBlock = isPickup
+    ? `<div style="margin-top:32px;padding:20px;background:#f8f9ff;border-radius:8px;">
+        <p style="color:#23356e;font-weight:bold;margin:0 0 8px;">📍 Pickup Information / 수령 안내</p>
+        <p style="color:#666;margin:0 0 6px;line-height:1.6;">
+          Please pick up your order at:<br/>
+          <strong>230 E. Brinkerhoff Ave, Palisades Park, NJ 07650</strong>
+        </p>
+        <p style="color:#999;font-size:13px;margin:0;">
+          주문하신 제품을 아래 주소에서 수령해 주시기 바랍니다:<br/>
+          230 E. Brinkerhoff Ave, Palisades Park, NJ 07650
+        </p>
+        <p style="color:#666;margin:12px 0 0;font-size:14px;">We will contact you when your order is ready for pickup.<br/>
+        <span style="color:#999;font-size:13px;">제품 준비가 완료되면 연락드리겠습니다.</span></p>
+      </div>`
+    : `<div style="margin-top:32px;padding:20px;background:#f8f9ff;border-radius:8px;">
+        <p style="color:#23356e;font-weight:bold;margin:0 0 8px;">🚚 Shipping Address / 배송지</p>
+        <p style="color:#666;margin:0 0 12px;line-height:1.6;">${address}</p>
+        <p style="color:#666;font-size:14px;margin:0;">Estimated delivery: <strong>5–10 business days</strong><br/>
+        <span style="color:#999;font-size:13px;">예상 배송 기간: 5~10 영업일</span></p>
+      </div>`;
 
   const html = `
 <!DOCTYPE html>
@@ -87,16 +112,8 @@ export async function sendOrderConfirmation(params: SendOrderConfirmationParams)
               </tr>
             </table>
 
-            <!-- Shipping -->
-            <div style="margin-top:32px;padding:20px;background:#f8f9ff;border-radius:8px;">
-              <p style="color:#23356e;font-weight:bold;margin:0 0 8px;">Shipping Address / 배송지</p>
-              <p style="color:#666;margin:0;line-height:1.6;">${address}</p>
-            </div>
-
-            <p style="color:#666;margin:32px 0 0;font-size:14px;">
-              We will contact you when your order ships.<br/>
-              <span style="color:#999;font-size:13px;">배송이 시작되면 연락드리겠습니다.</span>
-            </p>
+            <!-- Fulfillment -->
+            ${fulfillmentBlock}
           </td>
         </tr>
 
