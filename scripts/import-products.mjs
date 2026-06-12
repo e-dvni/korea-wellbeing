@@ -246,6 +246,16 @@ async function importProducts() {
     try {
       console.log(`\n📦 ${product.nameEN}`);
 
+      // Skip if a product with this slug already exists
+      const existing = await client.fetch(
+        `*[_type == "product" && slug.current == $slug][0]._id`,
+        { slug: product.slug.current }
+      );
+      if (existing) {
+        console.log(`  ⏭  Skipped — already exists (${existing})`);
+        continue;
+      }
+
       // Upload main image
       const images = imageUrl ? await uploadImageFromUrl(imageUrl, product.nameEN) : [];
 
