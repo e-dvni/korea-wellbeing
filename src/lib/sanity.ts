@@ -25,7 +25,11 @@ export async function getProducts() {
       slug,
       price,
       originalPrice,
-      images,
+      images[] {
+        _key,
+        alt,
+        asset-> { _id, url }
+      },
       descriptionEN,
       descriptionKR,
       category,
@@ -54,7 +58,11 @@ export async function getProduct(slug: string) {
       slug,
       price,
       originalPrice,
-      images,
+      images[] {
+        _key,
+        alt,
+        asset-> { _id, url }
+      },
       descriptionEN,
       descriptionKR,
       category,

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useCartStore } from "@/store/cart";
-import { urlFor } from "@/lib/sanity";
 import type { SanityProduct, SanityVariant } from "@/types/sanity";
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -25,10 +24,7 @@ function ProductCard({ product }: { product: SanityProduct }) {
   const displayPrice = selectedVariant ? selectedVariant.price : product.price;
   const isInStock = selectedVariant ? selectedVariant.inStock : product.inStock;
 
-  const imageUrl =
-    product.images?.length > 0
-      ? urlFor(product.images[0]).width(600).height(600).url()
-      : null;
+  const imageUrl = product.images?.length > 0 ? product.images[0].asset?.url ?? null : null;
 
   function handleAddToCart() {
     const cartId = selectedVariant

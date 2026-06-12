@@ -1,14 +1,10 @@
-export interface SanityImageAsset {
-  _ref: string;
-  _type: "reference";
-}
-
 export interface SanityImage {
   _key: string;
-  _type: "image";
-  asset: SanityImageAsset;
-  hotspot?: { x: number; y: number; height: number; width: number };
   alt?: string;
+  asset: {
+    _id: string;
+    url: string;
+  };
 }
 
 export interface SanityVariant {
