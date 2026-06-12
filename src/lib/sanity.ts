@@ -24,6 +24,7 @@ export async function getProducts() {
       nameKR,
       slug,
       price,
+      originalPrice,
       images,
       descriptionEN,
       descriptionKR,
@@ -35,6 +36,7 @@ export async function getProducts() {
         nameEN,
         nameKR,
         price,
+        originalPrice,
         inStock,
         stripePriceId
       }
@@ -51,6 +53,7 @@ export async function getProduct(slug: string) {
       nameKR,
       slug,
       price,
+      originalPrice,
       images,
       descriptionEN,
       descriptionKR,
@@ -62,6 +65,7 @@ export async function getProduct(slug: string) {
         nameEN,
         nameKR,
         price,
+        originalPrice,
         inStock,
         stripePriceId
       }

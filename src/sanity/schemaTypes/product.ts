@@ -27,9 +27,16 @@ export const product = defineType({
     }),
     defineField({
       name: "price",
-      title: "Price (USD $)",
+      title: "Sale Price (USD $)",
       type: "number",
-      description: "Base price. If this product has size/model variants below, this will be used as the starting price shown on the store.",
+      description: "The discounted/sale price shown to customers.",
+      validation: (Rule) => Rule.positive(),
+    }),
+    defineField({
+      name: "originalPrice",
+      title: "Original Price (USD $)",
+      type: "number",
+      description: "The original full price — shown crossed out next to the sale price.",
       validation: (Rule) => Rule.positive(),
     }),
     defineField({
@@ -55,9 +62,16 @@ export const product = defineType({
             }),
             defineField({
               name: "price",
-              title: "Price (USD $)",
+              title: "Sale Price (USD $)",
               type: "number",
               validation: (Rule) => Rule.required().positive(),
+            }),
+            defineField({
+              name: "originalPrice",
+              title: "Original Price (USD $)",
+              type: "number",
+              description: "Full price — shown crossed out.",
+              validation: (Rule) => Rule.positive(),
             }),
             defineField({
               name: "inStock",

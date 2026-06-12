@@ -76,6 +76,13 @@ function ProductCard({ product }: { product: SanityProduct }) {
             </span>
           </div>
         )}
+        {(product.originalPrice || product.variants?.some(v => v.originalPrice)) && (
+          <div className="absolute top-3 left-3">
+            <span className="bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-full">
+              10% OFF
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Info */}
@@ -117,9 +124,18 @@ function ProductCard({ product }: { product: SanityProduct }) {
         <div className="mt-auto flex items-center justify-between gap-3">
           <div>
             {hasVariants && <p className="text-xs text-gray-400">Starting from</p>}
-            <span className="text-2xl font-bold text-primary">
-              ${displayPrice?.toFixed(2) ?? "—"}
-            </span>
+            {/* Show original crossed-out price if available */}
+            {(() => {
+              const origPrice = selectedVariant ? selectedVariant.originalPrice : product.originalPrice;
+              return origPrice ? (
+                <div className="flex items-baseline gap-2">
+                  <span className="text-2xl font-bold text-primary">${displayPrice?.toFixed(2) ?? "—"}</span>
+                  <span className="text-sm text-gray-400 line-through">${origPrice.toFixed(2)}</span>
+                </div>
+              ) : (
+                <span className="text-2xl font-bold text-primary">${displayPrice?.toFixed(2) ?? "—"}</span>
+              );
+            })()}
           </div>
           <button
             onClick={handleAddToCart}

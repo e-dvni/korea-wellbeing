@@ -16,6 +16,7 @@ export interface SanityVariant {
   nameEN: string;
   nameKR: string;
   price: number;
+  originalPrice: number | null;
   inStock: boolean;
   stripePriceId: string | null;
 }
@@ -26,6 +27,7 @@ export interface SanityProduct {
   nameKR: string;
   slug: { current: string };
   price: number | null;
+  originalPrice: number | null;
   images: SanityImage[];
   descriptionEN: string;
   descriptionKR: string;

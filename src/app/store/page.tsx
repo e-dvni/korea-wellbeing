@@ -23,6 +23,33 @@ export default async function StorePage() {
       </div>
 
       <main className="flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12">
+        {/* Promotion banner */}
+        <div className="bg-primary rounded-2xl px-6 py-5 mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div>
+            <p className="text-white font-bold text-lg">🎉 Limited Time: 10% OFF All Products</p>
+            <p className="text-white/70 text-sm">전 제품 10% 할인 프로모션 진행 중</p>
+          </div>
+          <span className="bg-accent text-white text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap self-start sm:self-auto">
+            Limited Time · 한정 기간
+          </span>
+        </div>
+
+        {/* Shipping & pickup notice */}
+        <div className="bg-blue-50 border border-blue-100 rounded-2xl px-6 py-4 mb-10 space-y-1.5">
+          <p className="text-primary font-semibold text-sm flex items-center gap-2">
+            🚚 Free delivery on orders over $2,000 to Bergen, Essex & Hudson County, NJ
+          </p>
+          <p className="text-primary/70 text-xs">
+            버겐, 에식스, 허드슨 카운티(뉴저지) — $2,000 이상 주문 시 무료 배송
+          </p>
+          <p className="text-primary font-semibold text-sm flex items-center gap-2">
+            🏪 Local pickup available for all items · 모든 제품 방문 수령 가능
+          </p>
+          <p className="text-primary/70 text-xs">
+            230 E. Brinkerhoff Ave, Palisades Park, NJ 07650
+          </p>
+        </div>
+
         {/* Header */}
         <div className="mb-10">
           <h1 className="text-3xl sm:text-4xl font-bold text-primary">Shop</h1>
