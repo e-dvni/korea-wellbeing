@@ -29,7 +29,57 @@ export const product = defineType({
       name: "price",
       title: "Price (USD $)",
       type: "number",
-      validation: (Rule) => Rule.required().positive(),
+      description: "Base price. If this product has size/model variants below, this will be used as the starting price shown on the store.",
+      validation: (Rule) => Rule.positive(),
+    }),
+    defineField({
+      name: "variants",
+      title: "Size / Model Variants (옵션)",
+      type: "array",
+      description: "Add variants if this product comes in different sizes or models (e.g. Single, Queen, King). Leave empty for single-price products.",
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({
+              name: "nameEN",
+              title: "Variant Name (English)",
+              type: "string",
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: "nameKR",
+              title: "옵션명 (한국어)",
+              type: "string",
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: "price",
+              title: "Price (USD $)",
+              type: "number",
+              validation: (Rule) => Rule.required().positive(),
+            }),
+            defineField({
+              name: "inStock",
+              title: "In Stock / 재고 있음",
+              type: "boolean",
+              initialValue: true,
+            }),
+            defineField({
+              name: "stripePriceId",
+              title: "Stripe Price ID",
+              type: "string",
+              description: "Leave blank for now.",
+            }),
+          ],
+          preview: {
+            select: { title: "nameEN", subtitle: "price" },
+            prepare(value: Record<string, any>) {
+              return { title: value.title, subtitle: value.subtitle ? `$${value.subtitle}` : "" };
+            },
+          },
+        },
+      ],
     }),
     defineField({
       name: "images",

@@ -29,7 +29,15 @@ export async function getProducts() {
       descriptionKR,
       category,
       inStock,
-      stripePriceId
+      stripePriceId,
+      variants[] {
+        _key,
+        nameEN,
+        nameKR,
+        price,
+        inStock,
+        stripePriceId
+      }
     }`
   );
 }
@@ -48,7 +56,15 @@ export async function getProduct(slug: string) {
       descriptionKR,
       category,
       inStock,
-      stripePriceId
+      stripePriceId,
+      variants[] {
+        _key,
+        nameEN,
+        nameKR,
+        price,
+        inStock,
+        stripePriceId
+      }
     }`,
     { slug }
   );
