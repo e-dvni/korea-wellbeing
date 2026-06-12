@@ -244,27 +244,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Online Store Coming Soon ── */}
-      <section className="bg-primary py-12 sm:py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white/5 border border-white/10 rounded-2xl px-6 py-10 sm:px-12 text-center">
-            <span className="inline-block bg-accent text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-5">
-              In Progress · 준비 중
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-              Online Store In Progress
-            </h2>
-            <p className="text-xl font-semibold text-white/55 mb-4">온라인 스토어 준비 중</p>
-            <p className="text-white/45 max-w-lg mx-auto text-sm sm:text-base">
-              We&apos;re currently building our online store. Check back soon to purchase K Navien products directly from home.
-            </p>
-            <p className="text-white/30 max-w-lg mx-auto text-sm sm:text-base mt-1">
-              현재 온라인 스토어를 구축 중입니다. 곧 K나비엔 제품을 온라인으로 구매하실 수 있습니다.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* ── Contact ── */}
       <section id="contact" className="py-16 sm:py-24 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

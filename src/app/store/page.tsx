@@ -14,13 +14,6 @@ export default async function StorePage() {
     <div className="min-h-screen flex flex-col bg-gray-50">
       <Navbar variant="store" />
 
-      {/* Coming Soon Banner */}
-      <div className="bg-accent/10 border-b border-accent/20 px-4 py-3 text-center">
-        <p className="text-sm font-semibold text-accent">
-          🚧 Our online store is currently a work in progress — purchasing is not yet available. / 온라인 스토어 준비 중입니다.
-        </p>
-      </div>
-
       <main className="flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12">
         {/* Promotion banner */}
         <div className="bg-primary rounded-2xl px-6 py-5 mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
