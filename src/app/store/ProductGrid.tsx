@@ -57,7 +57,7 @@ function ProductCard({ product }: { product: SanityProduct }) {
       {/* Image */}
       <div className="relative w-full aspect-square bg-gray-50">
         {imageUrl ? (
-          <Image src={imageUrl} alt={product.nameEN} fill className="object-cover" />
+          <Image src={imageUrl} alt={product.nameEN} fill className="object-contain p-4 bg-white" />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-gray-200">
             <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
