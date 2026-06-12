@@ -38,9 +38,9 @@ export default function Navbar({ variant = "home" }: NavbarProps) {
           <div className="hidden md:flex items-center gap-8">
             {variant === "home" ? (
               <>
-                <a href="#products" className="text-primary/80 hover:text-primary font-medium transition-colors">
+                <Link href="/store" className="text-primary/80 hover:text-primary font-medium transition-colors">
                   Products / 제품
-                </a>
+                </Link>
                 <a href="#contact" className="text-primary/80 hover:text-primary font-medium transition-colors">
                   Contact / 연락처
                 </a>
@@ -120,9 +120,9 @@ export default function Navbar({ variant = "home" }: NavbarProps) {
         <div className="md:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-3">
           {variant === "home" ? (
             <>
-              <a href="#products" className="block text-primary py-2 font-medium border-b border-gray-100 pb-3" onClick={() => setMenuOpen(false)}>
+              <Link href="/store" className="block text-primary py-2 font-medium border-b border-gray-100 pb-3" onClick={() => setMenuOpen(false)}>
                 Products / 제품
-              </a>
+              </Link>
               <a href="#contact" className="block text-primary py-2 font-medium border-b border-gray-100 pb-3" onClick={() => setMenuOpen(false)}>
                 Contact / 연락처
               </a>

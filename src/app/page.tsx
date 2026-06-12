@@ -214,7 +214,7 @@ export default function Home() {
             {products.map((product) => (
               <a
                 key={product.id}
-                href="https://www.navieninc.com/products-accessories"
+                href="/store"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 flex flex-col"
