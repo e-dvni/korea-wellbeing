@@ -117,7 +117,7 @@ export default function Home() {
               Wellbeing Korea USA is your trusted source for the full line of premium K Navien products — clean water, efficient heating, and healthy air for American homes.
             </p>
             <p className="text-white/45 text-base sm:text-lg leading-relaxed mb-10 max-w-xl">
-              웰빙코리아 USA는 K나비엔 전 제품을 취급하는 공식 딜러로, 깨끗한 물, 효율적인 난방, 건강한 공기를 미국 가정에 제공합니다.
+              웰빙코리아 USA는 K나비엔 전 제품을 취급하며 깨끗한 물, 효율적인 난방, 건강한 공기를 미국 가정에 제공합니다.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <a
