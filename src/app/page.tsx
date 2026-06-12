@@ -121,7 +121,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <a
-                href="#products"
+                href="/store"
                 className="inline-flex items-center justify-center bg-accent text-white px-8 py-3.5 rounded-full font-semibold text-base hover:bg-[#c05e1e] transition-colors"
               >
                 View Products · 제품 보기
