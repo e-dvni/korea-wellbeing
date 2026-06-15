@@ -20,6 +20,7 @@ function ProductCard({ product }: { product: SanityProduct }) {
   const [selectedVariant, setSelectedVariant] = useState<SanityVariant | null>(
     hasVariants ? product.variants![0] : null
   );
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const displayPrice = selectedVariant ? selectedVariant.price : product.price;
   const isInStock = selectedVariant ? selectedVariant.inStock : product.inStock;
@@ -53,7 +54,10 @@ function ProductCard({ product }: { product: SanityProduct }) {
   }
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow duration-200 flex flex-col">
+    <div
+      className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col cursor-pointer"
+      onClick={() => setIsExpanded(!isExpanded)}
+    >
       {/* Image */}
       <div className="relative w-full aspect-square bg-gray-50">
         {imageUrl ? (
@@ -88,8 +92,20 @@ function ProductCard({ product }: { product: SanityProduct }) {
         </p>
         <h2 className="text-base font-bold text-primary leading-tight">{product.nameEN}</h2>
         <p className="text-sm font-semibold text-accent mb-2">{product.nameKR}</p>
-        <p className="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-1">{product.descriptionEN}</p>
-        <p className="text-gray-400 text-sm leading-relaxed line-clamp-2 mb-4">{product.descriptionKR}</p>
+        <p className={`text-gray-500 text-sm leading-relaxed mb-1 ${isExpanded ? "" : "line-clamp-2"}`}>{product.descriptionEN}</p>
+        <p className={`text-gray-400 text-sm leading-relaxed mb-2 ${isExpanded ? "" : "line-clamp-2"}`}>{product.descriptionKR}</p>
+        <button
+          className="flex items-center gap-1 text-xs text-primary/50 hover:text-primary mb-2 self-start"
+          onClick={(e) => { e.stopPropagation(); setIsExpanded(!isExpanded); }}
+        >
+          <svg
+            className={`w-3.5 h-3.5 transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`}
+            fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+          {isExpanded ? "Show less" : "Read more"}
+        </button>
 
         {/* Free taste testing notice for WUR500 */}
         {product.slug.current === "wur500-tankless-ro-water-system" && (
@@ -111,7 +127,7 @@ function ProductCard({ product }: { product: SanityProduct }) {
               {product.variants!.map((variant) => (
                 <button
                   key={variant._key}
-                  onClick={() => setSelectedVariant(variant)}
+                  onClick={(e) => { e.stopPropagation(); setSelectedVariant(variant); }}
                   disabled={!variant.inStock}
                   className={`px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors
                     ${selectedVariant?._key === variant._key
@@ -146,7 +162,7 @@ function ProductCard({ product }: { product: SanityProduct }) {
             })()}
           </div>
           <button
-            onClick={handleAddToCart}
+            onClick={(e) => { e.stopPropagation(); handleAddToCart(); }}
             disabled={!isInStock}
             className="flex-1 bg-primary text-white py-2.5 rounded-full font-semibold text-sm hover:bg-primary/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
           >
