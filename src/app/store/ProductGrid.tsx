@@ -107,16 +107,28 @@ function ProductCard({ product }: { product: SanityProduct }) {
           {isExpanded ? "Show less" : "Read more"}
         </button>
 
-        {/* Free taste testing notice for WUR500 */}
+        {/* Free taste testing notice + View Details for WUR500 */}
         {product.slug.current === "wur500-tankless-ro-water-system" && (
-          <div className="mb-4 bg-accent/10 border border-accent/20 rounded-xl px-3 py-2.5">
-            <p className="text-xs font-semibold text-accent">
-              🎉 Free Taste Testing every Tuesday &amp; Saturday
-            </p>
-            <p className="text-xs text-accent/80 mt-0.5">
-              매주 화·토요일 무료 시음회 — 230 E. Brinkerhoff Ave, Palisades Park, NJ
-            </p>
-          </div>
+          <>
+            <div className="mb-3 bg-accent/10 border border-accent/20 rounded-xl px-3 py-2.5">
+              <p className="text-xs font-semibold text-accent">
+                🎉 Free Taste Testing every Tuesday &amp; Saturday
+              </p>
+              <p className="text-xs text-accent/80 mt-0.5">
+                매주 화·토요일 무료 시음회 — 230 E. Brinkerhoff Ave, Palisades Park, NJ
+              </p>
+            </div>
+            <a
+              href="/store/wur500"
+              onClick={(e) => e.stopPropagation()}
+              className="flex items-center gap-1 text-sm font-semibold text-primary hover:text-accent transition-colors mb-3 self-start"
+            >
+              View Full Details · 자세히 보기
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </>
         )}
 
         {/* Variant selector */}
