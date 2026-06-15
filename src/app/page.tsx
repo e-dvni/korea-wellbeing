@@ -214,7 +214,9 @@ export default function Home() {
             {products.map((product) => (
               <a
                 key={product.id}
-                href="/store"
+                href="https://www.navieninc.com/products-accessories"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 flex flex-col"
               >
                 <div
@@ -233,7 +235,7 @@ export default function Home() {
                 <p className="text-gray-600 text-sm leading-relaxed mb-2 flex-1">{product.descEN}</p>
                 <p className="text-gray-400 text-sm leading-relaxed mb-4">{product.descKR}</p>
                 <div className="flex items-center gap-1 text-xs font-semibold text-primary/50 group-hover:text-accent transition-colors mt-auto">
-                  View Store
+                  View on Navien.com ↗
                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
