@@ -263,11 +263,19 @@ export default function Home() {
                 </svg>
               </div>
               <p className="text-sm text-gray-400 uppercase tracking-widest font-semibold mb-2">Phone · 전화</p>
+              <p className="text-xs text-gray-400 mb-1">Office / 사무실</p>
               <a
                 href="tel:+12014292632"
-                className="text-primary font-bold text-lg hover:text-accent transition-colors"
+                className="text-primary font-bold text-lg hover:text-accent transition-colors block"
               >
                 201-429-2632
+              </a>
+              <p className="text-xs text-gray-400 mt-3 mb-1">Cell / 휴대폰</p>
+              <a
+                href="tel:+16466731572"
+                className="text-primary font-bold text-lg hover:text-accent transition-colors block"
+              >
+                646-673-1572
               </a>
             </div>
 
