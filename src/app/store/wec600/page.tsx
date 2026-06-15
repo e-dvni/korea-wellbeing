@@ -8,9 +8,7 @@ import WEC600AddToCart from "./WEC600AddToCart";
 export const revalidate = 60;
 
 export default async function WEC600Page() {
-  const product: SanityProduct | null = await getProduct("wec600-deionization-water-treatment-system")
-    ?? await getProduct("wec600")
-    ?? await getProduct("wec-series-deionization-water-treatment-system");
+  const product: SanityProduct | null = await getProduct("wec600-whole-house-water-treatment");
   const imageUrl = product?.images?.[0]?.asset?.url ?? null;
 
   return (
@@ -83,21 +81,7 @@ export default async function WEC600Page() {
                 ))}
               </div>
 
-              {product ? (
-                <WEC600AddToCart product={product} />
-              ) : (
-                <div className="space-y-3">
-                  <p className="text-gray-400 text-sm">
-                    Product details currently unavailable online.
-                  </p>
-                  <a
-                    href="tel:+12014292632"
-                    className="inline-flex items-center gap-2 bg-accent text-white font-bold px-6 py-3 rounded-full hover:bg-[#c05e1e] transition-colors"
-                  >
-                    Call to Order · 전화 주문
-                  </a>
-                </div>
-              )}
+              {product && <WEC600AddToCart product={product} />}
             </div>
           </div>
         </div>
