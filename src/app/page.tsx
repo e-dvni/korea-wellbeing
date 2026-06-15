@@ -254,7 +254,7 @@ export default function Home() {
             <p className="text-xl font-semibold text-primary/70 mt-1">연락처</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto">
             {/* Phone */}
             <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center">
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3">
@@ -309,6 +309,19 @@ export default function Home() {
                 <br />
                 Palisades Park, NJ 07650
               </p>
+            </div>
+
+            {/* Hours */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center">
+              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <p className="text-sm text-gray-400 uppercase tracking-widest font-semibold mb-2">Hours · 영업시간</p>
+              <p className="text-primary font-bold text-base">Mon – Sat</p>
+              <p className="text-accent font-bold text-base">10:00 AM – 4:00 PM</p>
+              <p className="text-gray-400 text-sm mt-1">월 – 토</p>
             </div>
           </div>
         </div>
