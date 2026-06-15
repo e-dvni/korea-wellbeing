@@ -107,6 +107,20 @@ function ProductCard({ product }: { product: SanityProduct }) {
           {isExpanded ? "Show less" : "Read more"}
         </button>
 
+        {/* View Details link for products with dedicated pages */}
+        {product.slug.current.startsWith("wec600") && (
+          <a
+            href="/store/wec600"
+            onClick={(e) => e.stopPropagation()}
+            className="flex items-center gap-1 text-sm font-semibold text-primary hover:text-accent transition-colors mb-3 self-start"
+          >
+            View Full Details · 자세히 보기
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        )}
+
         {/* Free taste testing notice + View Details for WUR500 */}
         {product.slug.current === "wur500-tankless-ro-water-system" && (
           <>

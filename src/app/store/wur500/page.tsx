@@ -13,15 +13,15 @@ export default async function WUR500Page() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      <Navbar variant="store" />
+      <Navbar variant="product" />
 
       {/* ── Hero ── */}
-      <section className="bg-primary text-white">
+      <section className="bg-white border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
           {/* Breadcrumb */}
           <Link
             href="/store"
-            className="inline-flex items-center gap-1.5 text-white/50 hover:text-white text-sm font-semibold mb-10 transition-colors"
+            className="inline-flex items-center gap-1.5 text-gray-400 hover:text-primary text-sm font-semibold mb-10 transition-colors"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -31,7 +31,7 @@ export default async function WUR500Page() {
 
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Product image */}
-            <div className="bg-white rounded-3xl p-10 shadow-2xl flex items-center justify-center aspect-square max-w-sm mx-auto lg:max-w-none w-full">
+            <div className="bg-gray-50 border border-gray-200 rounded-3xl p-10 flex items-center justify-center aspect-square max-w-sm mx-auto lg:max-w-none w-full">
               {imageUrl ? (
                 <Image
                   src={imageUrl}
@@ -51,16 +51,16 @@ export default async function WUR500Page() {
 
             {/* Product info */}
             <div>
-              <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-1.5 mb-5">
+              <div className="inline-flex items-center gap-2 bg-primary/8 rounded-full px-4 py-1.5 mb-5">
                 <span className="w-2 h-2 rounded-full bg-accent"></span>
-                <span className="text-white/70 text-sm font-semibold">Water Purifier · 정수기</span>
+                <span className="text-primary/70 text-sm font-semibold">Water Purifier · 정수기</span>
               </div>
 
-              <h1 className="text-5xl sm:text-6xl font-bold leading-none mb-1">WUR500</h1>
-              <p className="text-2xl font-semibold text-white/70 mb-1">Tankless RO System</p>
+              <h1 className="text-5xl sm:text-6xl font-bold text-primary leading-none mb-1">WUR500</h1>
+              <p className="text-2xl font-semibold text-gray-500 mb-1">Tankless RO System</p>
               <p className="text-xl text-accent font-semibold mb-6">탱크리스 역삼투압 정수기</p>
 
-              <p className="text-white/60 text-lg leading-relaxed mb-8 max-w-lg">
+              <p className="text-gray-500 text-lg leading-relaxed mb-8 max-w-lg">
                 Advanced under-sink reverse osmosis — no tank, no waiting, no wasted space. Compact, high-performance filtration for fresher, cleaner water right from your tap.
               </p>
 
@@ -72,11 +72,11 @@ export default async function WUR500Page() {
                   { label: "Filtration Size", value: "0.0001 μm" },
                   { label: "Efficiency Ratio", value: "2:1" },
                 ].map((s) => (
-                  <div key={s.label} className="bg-white/10 rounded-xl px-4 py-3">
-                    <p className="text-white/40 text-xs font-semibold uppercase tracking-wider mb-0.5">
+                  <div key={s.label} className="bg-gray-100 rounded-xl px-4 py-3">
+                    <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-0.5">
                       {s.label}
                     </p>
-                    <p className="text-white font-bold text-xl">{s.value}</p>
+                    <p className="text-primary font-bold text-xl">{s.value}</p>
                   </div>
                 ))}
               </div>
@@ -84,7 +84,7 @@ export default async function WUR500Page() {
               {product ? (
                 <WUR500AddToCart product={product} />
               ) : (
-                <p className="text-white/40 text-sm">
+                <p className="text-gray-400 text-sm">
                   Product details currently unavailable. Please contact us to order.
                 </p>
               )}

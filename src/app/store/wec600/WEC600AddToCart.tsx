@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useCartStore } from "@/store/cart";
 import type { SanityProduct, SanityVariant } from "@/types/sanity";
 
-export default function WUR500AddToCart({ product }: { product: SanityProduct }) {
+export default function WEC600AddToCart({ product }: { product: SanityProduct }) {
   const { addItem } = useCartStore();
   const hasVariants = product.variants && product.variants.length > 0;
   const [selectedVariant, setSelectedVariant] = useState<SanityVariant | null>(
@@ -42,7 +42,7 @@ export default function WUR500AddToCart({ product }: { product: SanityProduct })
       {hasVariants && (
         <div className="mb-6">
           <p className="text-xs text-gray-400 font-semibold uppercase tracking-widest mb-3">
-            Select Size · 사이즈 선택
+            Select Model · 모델 선택
           </p>
           <div className="flex flex-wrap gap-2">
             {product.variants!.map((v) => (
@@ -86,7 +86,7 @@ export default function WUR500AddToCart({ product }: { product: SanityProduct })
             ? "bg-green-500 text-white"
             : isInStock
               ? "bg-accent text-white hover:bg-[#c05e1e] active:scale-95"
-              : "bg-white/20 text-white/40 cursor-not-allowed"
+              : "bg-gray-200 text-gray-400 cursor-not-allowed"
           }
         `}
       >

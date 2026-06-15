@@ -8,7 +8,7 @@ import { useCartStore, cartItemCount } from "@/store/cart";
 const NAVIEN_PRODUCTS_URL = "https://www.navieninc.com/products-accessories";
 
 interface NavbarProps {
-  variant?: "home" | "store";
+  variant?: "home" | "store" | "product";
 }
 
 export default function Navbar({ variant = "home" }: NavbarProps) {
@@ -44,6 +44,18 @@ export default function Navbar({ variant = "home" }: NavbarProps) {
                 <a href="#contact" className="text-primary/80 hover:text-primary font-medium transition-colors">
                   Contact / 연락처
                 </a>
+              </>
+            ) : variant === "product" ? (
+              <>
+                <Link href="/" className="text-primary/80 hover:text-primary font-medium transition-colors">
+                  Home / 홈
+                </Link>
+                <Link href="/store" className="text-primary/80 hover:text-primary font-medium transition-colors">
+                  Products / 제품
+                </Link>
+                <Link href="/#contact" className="text-primary/80 hover:text-primary font-medium transition-colors">
+                  Contact / 연락처
+                </Link>
               </>
             ) : (
               <>
@@ -126,6 +138,18 @@ export default function Navbar({ variant = "home" }: NavbarProps) {
               <a href="#contact" className="block text-primary py-2 font-medium border-b border-gray-100 pb-3" onClick={() => setMenuOpen(false)}>
                 Contact / 연락처
               </a>
+            </>
+          ) : variant === "product" ? (
+            <>
+              <Link href="/" className="block text-primary py-2 font-medium border-b border-gray-100 pb-3" onClick={() => setMenuOpen(false)}>
+                Home / 홈
+              </Link>
+              <Link href="/store" className="block text-primary py-2 font-medium border-b border-gray-100 pb-3" onClick={() => setMenuOpen(false)}>
+                Products / 제품
+              </Link>
+              <Link href="/#contact" className="block text-primary py-2 font-medium border-b border-gray-100 pb-3" onClick={() => setMenuOpen(false)}>
+                Contact / 연락처
+              </Link>
             </>
           ) : (
             <>
