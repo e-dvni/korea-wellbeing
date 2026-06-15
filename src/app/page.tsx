@@ -206,7 +206,7 @@ export default function Home() {
               We carry the complete K Navien lineup — trusted Korean technology for clean water, efficient heating, and healthy living.
             </p>
             <p className="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg mt-1">
-              K나비엔 전 제품을 취급합니다. 각 제품을 클릭하면 나비엔 공식 홈페이지로 이동합니다.
+              K나비엔 전 제품을 취급합니다. 각 제품을 클릭하면 온라인 스토어로 이동합니다.
             </p>
           </div>
 
@@ -214,9 +214,7 @@ export default function Home() {
             {products.map((product) => (
               <a
                 key={product.id}
-                href="https://www.navieninc.com/products-accessories"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/store"
                 className="group bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 flex flex-col"
               >
                 <div
@@ -235,10 +233,7 @@ export default function Home() {
                 <p className="text-gray-600 text-base leading-relaxed mb-2 flex-1">{product.descEN}</p>
                 <p className="text-gray-500 text-base leading-relaxed mb-4">{product.descKR}</p>
                 <div className="flex items-center gap-1 text-xs font-semibold text-primary/50 group-hover:text-accent transition-colors mt-auto">
-                  View on Navien.com ↗
-                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
+                  Shop Now · 구매하기 →
                 </div>
               </a>
             ))}
