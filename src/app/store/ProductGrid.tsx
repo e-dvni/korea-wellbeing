@@ -87,15 +87,15 @@ function ProductCard({ product }: { product: SanityProduct }) {
 
       {/* Info */}
       <div className="p-5 flex flex-col flex-1">
-        <p className="text-xs text-gray-400 font-medium mb-1">
+        <p className="text-sm text-gray-400 font-medium mb-1">
           {CATEGORY_LABELS[product.category] ?? product.category}
         </p>
         <h2 className="text-base font-bold text-primary leading-tight">{product.nameEN}</h2>
         <p className="text-sm font-semibold text-accent mb-2">{product.nameKR}</p>
-        <p className={`text-gray-500 text-sm leading-relaxed mb-1 ${isExpanded ? "" : "line-clamp-2"}`}>{product.descriptionEN}</p>
-        <p className={`text-gray-400 text-sm leading-relaxed mb-2 ${isExpanded ? "" : "line-clamp-2"}`}>{product.descriptionKR}</p>
+        <p className={`text-gray-500 text-base leading-relaxed mb-1 ${isExpanded ? "" : "line-clamp-2"}`}>{product.descriptionEN}</p>
+        <p className={`text-gray-400 text-base leading-relaxed mb-2 ${isExpanded ? "" : "line-clamp-2"}`}>{product.descriptionKR}</p>
         <button
-          className="flex items-center gap-1 text-xs text-primary/50 hover:text-primary mb-2 self-start"
+          className="flex items-center gap-1 text-sm text-primary/50 hover:text-primary mb-2 self-start"
           onClick={(e) => { e.stopPropagation(); setIsExpanded(!isExpanded); }}
         >
           <svg
@@ -122,14 +122,14 @@ function ProductCard({ product }: { product: SanityProduct }) {
         {/* Variant selector */}
         {hasVariants && (
           <div className="mb-4">
-            <p className="text-xs text-gray-500 font-semibold mb-2">Size / 사이즈</p>
+            <p className="text-sm text-gray-500 font-semibold mb-2">Size / 사이즈</p>
             <div className="flex flex-wrap gap-2">
               {product.variants!.map((variant) => (
                 <button
                   key={variant._key}
                   onClick={(e) => { e.stopPropagation(); setSelectedVariant(variant); }}
                   disabled={!variant.inStock}
-                  className={`px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors
+                  className={`px-3 py-1.5 rounded-full text-sm font-semibold border transition-colors
                     ${selectedVariant?._key === variant._key
                       ? "bg-primary text-white border-primary"
                       : "bg-white text-primary border-gray-200 hover:border-primary"
@@ -147,7 +147,7 @@ function ProductCard({ product }: { product: SanityProduct }) {
 
         <div className="mt-auto flex items-center justify-between gap-3">
           <div>
-            {hasVariants && <p className="text-xs text-gray-400">Starting from</p>}
+            {hasVariants && <p className="text-sm text-gray-400">Starting from</p>}
             {/* Show original crossed-out price if available */}
             {(() => {
               const origPrice = selectedVariant ? selectedVariant.originalPrice : product.originalPrice;

@@ -202,10 +202,10 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-primary">Our Products</h2>
             <p className="text-xl font-semibold text-primary/70 mt-1 mb-4">제품 소개</p>
-            <p className="text-gray-500 max-w-2xl mx-auto text-sm sm:text-base">
+            <p className="text-gray-500 max-w-2xl mx-auto text-base sm:text-lg">
               We carry the complete K Navien lineup — trusted Korean technology for clean water, efficient heating, and healthy living.
             </p>
-            <p className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base mt-1">
+            <p className="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg mt-1">
               K나비엔 전 제품을 취급합니다. 각 제품을 클릭하면 나비엔 공식 홈페이지로 이동합니다.
             </p>
           </div>
@@ -232,8 +232,8 @@ export default function Home() {
                   {product.nameEN}
                 </h3>
                 <p className="text-base font-semibold text-accent mb-3">{product.nameKR}</p>
-                <p className="text-gray-600 text-sm leading-relaxed mb-2 flex-1">{product.descEN}</p>
-                <p className="text-gray-400 text-sm leading-relaxed mb-4">{product.descKR}</p>
+                <p className="text-gray-600 text-base leading-relaxed mb-2 flex-1">{product.descEN}</p>
+                <p className="text-gray-500 text-base leading-relaxed mb-4">{product.descKR}</p>
                 <div className="flex items-center gap-1 text-xs font-semibold text-primary/50 group-hover:text-accent transition-colors mt-auto">
                   View on Navien.com ↗
                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -262,7 +262,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                 </svg>
               </div>
-              <p className="text-xs text-gray-400 uppercase tracking-widest font-semibold mb-2">Phone · 전화</p>
+              <p className="text-sm text-gray-400 uppercase tracking-widest font-semibold mb-2">Phone · 전화</p>
               <a
                 href="tel:+12014292632"
                 className="text-primary font-bold text-lg hover:text-accent transition-colors"
@@ -278,10 +278,10 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                 </svg>
               </div>
-              <p className="text-xs text-gray-400 uppercase tracking-widest font-semibold mb-2">Email · 이메일</p>
+              <p className="text-sm text-gray-400 uppercase tracking-widest font-semibold mb-2">Email · 이메일</p>
               <a
                 href="mailto:sales@wellbeingkoreausa.com"
-                className="text-primary font-bold hover:text-accent transition-colors text-sm break-all"
+                className="text-primary font-bold hover:text-accent transition-colors text-base break-all"
               >
                 sales@wellbeingkoreausa.com
               </a>
@@ -295,8 +295,8 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                 </svg>
               </div>
-              <p className="text-xs text-gray-400 uppercase tracking-widest font-semibold mb-2">Address · 주소</p>
-              <p className="text-primary font-bold text-sm leading-relaxed">
+              <p className="text-sm text-gray-400 uppercase tracking-widest font-semibold mb-2">Address · 주소</p>
+              <p className="text-primary font-bold text-base leading-relaxed">
                 230 E. Brinkerhoff Ave
                 <br />
                 Palisades Park, NJ 07650
