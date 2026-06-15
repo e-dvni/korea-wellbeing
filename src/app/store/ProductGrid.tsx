@@ -91,6 +91,18 @@ function ProductCard({ product }: { product: SanityProduct }) {
         <p className="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-1">{product.descriptionEN}</p>
         <p className="text-gray-400 text-sm leading-relaxed line-clamp-2 mb-4">{product.descriptionKR}</p>
 
+        {/* Free taste testing notice for WUR500 */}
+        {product.slug.current === "wur500-tankless-ro-water-system" && (
+          <div className="mb-4 bg-accent/10 border border-accent/20 rounded-xl px-3 py-2.5">
+            <p className="text-xs font-semibold text-accent">
+              🎉 Free Taste Testing every Tuesday &amp; Saturday
+            </p>
+            <p className="text-xs text-accent/80 mt-0.5">
+              매주 화·토요일 무료 시음회 — 230 E. Brinkerhoff Ave, Palisades Park, NJ
+            </p>
+          </div>
+        )}
+
         {/* Variant selector */}
         {hasVariants && (
           <div className="mb-4">
