@@ -49,6 +49,14 @@ export const product = defineType({
           type: "object",
           fields: [
             defineField({
+              name: "inStock",
+              title: "In Stock / 재고 있음",
+              type: "boolean",
+              description: "Turn OFF to mark this specific size/model as sold out.",
+              initialValue: true,
+              options: { layout: "switch" },
+            }),
+            defineField({
               name: "nameEN",
               title: "Variant Name (English)",
               type: "string",
@@ -72,12 +80,6 @@ export const product = defineType({
               type: "number",
               description: "Full price — shown crossed out.",
               validation: (Rule) => Rule.positive(),
-            }),
-            defineField({
-              name: "inStock",
-              title: "In Stock / 재고 있음",
-              type: "boolean",
-              initialValue: true,
             }),
             defineField({
               name: "stripePriceId",

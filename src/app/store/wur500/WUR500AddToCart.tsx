@@ -86,7 +86,7 @@ export default function WUR500AddToCart({ product }: { product: SanityProduct })
             ? "bg-green-500 text-white"
             : isInStock
               ? "bg-accent text-white hover:bg-[#c05e1e] active:scale-95"
-              : "bg-white/20 text-white/40 cursor-not-allowed"
+              : "bg-gray-200 text-gray-400 cursor-not-allowed"
           }
         `}
       >
