@@ -87,9 +87,11 @@ export const product = defineType({
             }),
           ],
           preview: {
-            select: { title: "nameEN", subtitle: "price" },
+            select: { title: "nameEN", price: "price", inStock: "inStock" },
             prepare(value: Record<string, any>) {
-              return { title: value.title, subtitle: value.subtitle ? `$${value.subtitle}` : "" };
+              const stock = value.inStock === false ? "⛔ Out of Stock" : "✅ In Stock";
+              const price = value.price ? `$${value.price}` : "";
+              return { title: value.title, subtitle: [price, stock].filter(Boolean).join(" · ") };
             },
           },
         },
