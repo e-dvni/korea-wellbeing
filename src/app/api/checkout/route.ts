@@ -3,7 +3,6 @@ import { stripe } from "@/lib/stripe";
 import type { CartItem } from "@/store/cart";
 
 const NJ_TAX_RATE = 0.06625; // 6.625% NJ sales tax
-const FREE_DELIVERY_THRESHOLD_CENTS = 200000; // $2,000.00
 
 export async function POST(req: NextRequest) {
   const { items }: { items: CartItem[] } = await req.json();
@@ -19,7 +18,6 @@ export async function POST(req: NextRequest) {
     0
   );
   const taxCents = Math.round(subtotalCents * NJ_TAX_RATE);
-  const qualifiesForDelivery = subtotalCents >= FREE_DELIVERY_THRESHOLD_CENTS;
 
   const pickupOption = {
     shipping_rate_data: {
@@ -33,7 +31,7 @@ export async function POST(req: NextRequest) {
     shipping_rate_data: {
       type: "fixed_amount" as const,
       fixed_amount: { amount: 0, currency: "usd" },
-      display_name: "Free Delivery (Bergen, Essex & Hudson County, NJ only)",
+      display_name: "Free Delivery (Essex, Hudson, Bergen County NJ & New York City)",
       delivery_estimate: {
         minimum: { unit: "business_day" as const, value: 3 },
         maximum: { unit: "business_day" as const, value: 7 },
@@ -69,14 +67,8 @@ export async function POST(req: NextRequest) {
         },
       },
     ],
-    // Only collect shipping address if delivery is an option
-    ...(qualifiesForDelivery
-      ? { shipping_address_collection: { allowed_countries: ["US"] } }
-      : {}),
-    // Under $2,000 = pickup only; $2,000+ = delivery or pickup
-    shipping_options: qualifiesForDelivery
-      ? [deliveryOption, pickupOption]
-      : [pickupOption],
+    shipping_address_collection: { allowed_countries: ["US"] },
+    shipping_options: [deliveryOption, pickupOption],
     success_url: `${origin}/store/success?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${origin}/store`,
     metadata: {

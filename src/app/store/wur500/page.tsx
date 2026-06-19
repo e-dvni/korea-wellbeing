@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import { getProduct } from "@/lib/sanity";
 import type { SanityProduct } from "@/types/sanity";
@@ -7,12 +8,46 @@ import WUR500AddToCart from "./WUR500AddToCart";
 
 export const revalidate = 60;
 
+export const metadata: Metadata = {
+  title: "WUR500 Tankless RO Water Purifier",
+  description:
+    "Navien WUR500 Tankless Reverse Osmosis Water Purification System. No tank, no waiting — 600 GPD production, 99% TDS reduction, 0.0001 micron filtration. Available in Palisades Park, NJ with delivery across Bergen, Essex & Hudson County.",
+  openGraph: {
+    title: "Navien WUR500 Tankless RO Water Purifier | Wellbeing Korea USA",
+    description:
+      "600 GPD, 99% TDS reduction, smart faucet with live TDS display. Shop the WUR500 with free delivery to Essex, Hudson, Bergen County NJ & New York City.",
+    url: "https://www.wellbeingkoreausa.com/store/wur500",
+    type: "website",
+  },
+};
+
+const wur500JsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Navien WUR500 Tankless RO Water Purification System",
+  description:
+    "Compact under-sink tankless reverse osmosis system. 600 GPD production, 99% TDS reduction, 0.0001 micron filtration, smart faucet with live TDS display and filter alerts.",
+  brand: { "@type": "Brand", name: "K Navien" },
+  category: "Water Purifier",
+  offers: {
+    "@type": "Offer",
+    priceCurrency: "USD",
+    availability: "https://schema.org/InStock",
+    url: "https://www.wellbeingkoreausa.com/store/wur500",
+    seller: { "@type": "Organization", name: "Wellbeing Korea USA" },
+  },
+};
+
 export default async function WUR500Page() {
   const product: SanityProduct | null = await getProduct("wur500-tankless-ro-water-system");
   const imageUrl = product?.images?.[0]?.asset?.url ?? null;
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(wur500JsonLd) }}
+      />
       <Navbar variant="product" />
 
       {/* ── Hero ── */}

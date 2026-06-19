@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import { getProduct } from "@/lib/sanity";
 import type { SanityProduct } from "@/types/sanity";
@@ -7,12 +8,46 @@ import WEC600AddToCart from "./WEC600AddToCart";
 
 export const revalidate = 60;
 
+export const metadata: Metadata = {
+  title: "WEC600 Whole-Home Water Treatment System",
+  description:
+    "Navien WEC600 saltless whole-home deionization water treatment system. No salt, no downtime — NaviLink Lite Wi-Fi monitoring, dual NDI modules, self-cleaning CIP technology. Available in Palisades Park, NJ.",
+  openGraph: {
+    title: "Navien WEC600 Whole-Home Water Treatment | Wellbeing Korea USA",
+    description:
+      "Saltless whole-home water treatment with zero downtime. Smart Wi-Fi monitoring, self-cleaning, no heavy salt bags. Shop with free delivery to Essex, Hudson, Bergen County NJ & New York City.",
+    url: "https://www.wellbeingkoreausa.com/store/wec600",
+    type: "website",
+  },
+};
+
+const wec600JsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Navien WEC600 Whole-Home Deionization Water Treatment System",
+  description:
+    "Point-of-entry saltless whole-home water treatment. Dual NDI electro-membrane modules, zero downtime, self-cleaning CIP technology, NaviLink Lite Wi-Fi monitoring.",
+  brand: { "@type": "Brand", name: "K Navien" },
+  category: "Water Treatment System",
+  offers: {
+    "@type": "Offer",
+    priceCurrency: "USD",
+    availability: "https://schema.org/InStock",
+    url: "https://www.wellbeingkoreausa.com/store/wec600",
+    seller: { "@type": "Organization", name: "Wellbeing Korea USA" },
+  },
+};
+
 export default async function WEC600Page() {
   const product: SanityProduct | null = await getProduct("wec600-whole-house-water-treatment");
   const imageUrl = product?.images?.[0]?.asset?.url ?? null;
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(wec600JsonLd) }}
+      />
       <Navbar variant="product" />
 
       {/* ── Hero ── */}

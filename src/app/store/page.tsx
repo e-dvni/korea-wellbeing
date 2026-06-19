@@ -1,11 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import { getProducts } from "@/lib/sanity";
 import type { SanityProduct } from "@/types/sanity";
 import ProductGrid from "./ProductGrid";
 
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "Shop K Navien Products",
+  description:
+    "Buy K Navien water purifiers, condensing boilers, whole-home water treatment systems, hot water mats, and more. Free delivery to Essex, Hudson, Bergen County NJ and New York City. Local pickup available in Palisades Park, NJ.",
+  openGraph: {
+    title: "Shop K Navien Products | Wellbeing Korea USA",
+    description:
+      "Water purifiers, boilers, water softeners, and more. Free delivery to Essex, Hudson, Bergen County NJ and New York City.",
+    url: "https://www.wellbeingkoreausa.com/store",
+    type: "website",
+  },
+};
 
 export default async function StorePage() {
   const products: SanityProduct[] = await getProducts();
@@ -29,10 +43,10 @@ export default async function StorePage() {
         {/* Shipping & pickup notice */}
         <div className="bg-blue-50 border border-blue-100 rounded-2xl px-6 py-4 mb-10 space-y-1.5">
           <p className="text-primary font-semibold text-base flex items-center gap-2">
-            🚚 Free delivery on orders over $2,000 to Bergen, Essex & Hudson County, NJ
+            🚚 Free delivery to Essex, Hudson, Bergen County NJ & New York City
           </p>
           <p className="text-primary/70 text-sm">
-            버겐, 에식스, 허드슨 카운티(뉴저지) — $2,000 이상 주문 시 무료 배송
+            에식스, 허드슨, 버겐 카운티(뉴저지) 및 뉴욕시 — 무료 배송
           </p>
           <p className="text-primary font-semibold text-base flex items-center gap-2">
             🏪 Local pickup available for all items · 모든 제품 방문 수령 가능
