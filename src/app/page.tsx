@@ -1,7 +1,19 @@
-"use client";
-
+import type { Metadata } from "next";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
+
+export const metadata: Metadata = {
+  title: "Wellbeing Korea USA | K Navien Dealer — Palisades Park, NJ",
+  description:
+    "Wellbeing Korea USA is your authorized K Navien dealer in Palisades Park, NJ. Water purifiers, condensing boilers, water softeners, hot water mats, HVAC, and air purification. Free delivery to Bergen, Essex & Hudson County on orders over $2,000.",
+  openGraph: {
+    title: "Wellbeing Korea USA | K Navien Dealer — Palisades Park, NJ",
+    description:
+      "Authorized K Navien dealer in Palisades Park, NJ. Premium water purification, heating, and air systems. Free delivery across Bergen, Essex & Hudson County, NJ.",
+    url: "https://www.wellbeingkoreausa.com",
+    type: "website",
+  },
+};
 
 const products = [
   {
@@ -85,9 +97,48 @@ const products = [
   },
 ];
 
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Wellbeing Korea USA",
+  description:
+    "Authorized K Navien dealer in Palisades Park, NJ offering water purifiers, condensing boilers, whole-home water treatment, hot water mats, HVAC systems, and air purification.",
+  url: "https://www.wellbeingkoreausa.com",
+  telephone: "+12014292632",
+  email: "sales@wellbeingkoreausa.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "230 E. Brinkerhoff Ave",
+    addressLocality: "Palisades Park",
+    addressRegion: "NJ",
+    postalCode: "07650",
+    addressCountry: "US",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "10:00",
+      closes: "16:00",
+    },
+  ],
+  priceRange: "$$",
+  currenciesAccepted: "USD",
+  paymentAccepted: "Credit Card",
+  areaServed: [
+    { "@type": "AdministrativeArea", name: "Bergen County, NJ" },
+    { "@type": "AdministrativeArea", name: "Essex County, NJ" },
+    { "@type": "AdministrativeArea", name: "Hudson County, NJ" },
+  ],
+};
+
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+      />
 
       <Navbar variant="home" />
 
@@ -271,6 +322,13 @@ export default function Home() {
                 className="text-primary font-bold text-lg hover:text-accent transition-colors block"
               >
                 646-673-1572
+              </a>
+              <p className="text-xs text-gray-400 mt-3 mb-1">NY Oneness GK</p>
+              <a
+                href="tel:+13475104625"
+                className="text-primary font-bold text-lg hover:text-accent transition-colors block"
+              >
+                347-510-4625
               </a>
             </div>
 
