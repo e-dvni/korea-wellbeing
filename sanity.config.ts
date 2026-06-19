@@ -6,8 +6,8 @@ export default defineConfig({
   name: "korea-wellbeing",
   title: "Wellbeing Korea USA — Product Manager",
   basePath: "/studio",
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+  projectId: "fzlkp2w7",
+  dataset: "production",
   plugins: [structureTool()],
   schema: {
     types: schemaTypes,
